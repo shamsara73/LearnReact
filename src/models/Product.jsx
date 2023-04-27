@@ -43,7 +43,7 @@ function ProductList(){
     return (
         <>
             <Container fluid>
-                <h1>Product List</h1>
+                <h1>Product List Test</h1>
 
                 <Row>
                     {tempData.map((_data) => <Product data={_data} />)}
