@@ -6,7 +6,6 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Paging from 'react-bootstrap/Pagination';
 import { useState  } from 'react';
-import Pagination from './Pagination';
 
 // const PagingContextGlobal = createContext()
 
@@ -44,11 +43,18 @@ function ProductList(){
         <>
             <Container fluid>
                 <h1>Product List Test</h1>
+                <Row>
+                    <Col md={4}></Col>
+                    <Col md={4}>
+                        <Paging size="sm">{items}</Paging>
+                    </Col>
+                    <Col md={4}></Col>
+                </Row>
+                
 
                 <Row>
                     {tempData.map((_data) => <Product data={_data} />)}
                 </Row>
-                <Paging size="sm">{items}</Paging>
 
             </Container>
             {/* <Pagination data={pagination} /> */}
@@ -78,4 +84,4 @@ function Product(props){
 
 
 
-export default ProductList
+export default ProductList 
