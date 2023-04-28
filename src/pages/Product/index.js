@@ -1,21 +1,22 @@
-import ReactDOM from "react-dom/client";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Product from '../../components/Product';
+import AddProduct from '../../components/AddProduct';
+import Container from 'react-bootstrap/Container';
 
 
-// const _product = <Product />
-// const root = ReactDOM.createRoot(document.getElementById('root'));
-// root.render(
-//   // <React.StrictMode>
-//   // </React.StrictMode>
-//   // <Car />
-//   <>
-//     <Product />
-//   </>
-// );
-function ProductList(){
-  return <Product />
+function ProductMenu(){
+  return (
+	<>
+		<Container fluid>
+			<h1>Product List</h1>
+			
+			<AddProduct />
+			<Product />
+		</Container>
+		
+	</>
+  )
 }
 
 
-export default ProductList;
+export default ProductMenu;
