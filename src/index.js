@@ -8,9 +8,9 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Layout />}>
+        <Route path="/LearnReact" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="product" element={<Product />} />
+          <Route path="/LearnReact/product" element={<Product />} />
         </Route>
       </Routes>
     </BrowserRouter>
