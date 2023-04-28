@@ -10,7 +10,7 @@ export default function App() {
       <Routes>
         <Route basemname={`/${process.env.PUBLIC_URL}`} path="" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="product" element={<Product />} />
+          <Route path="/product" element={<Product />} />
         </Route>
       </Routes>
     </BrowserRouter>
@@ -18,4 +18,10 @@ export default function App() {
 }
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<App />);
+root.render(
+<React.StrictMode>
+<App />
+
+</React.StrictMode>
+
+);
