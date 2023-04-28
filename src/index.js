@@ -8,7 +8,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Layout />}>
+        <Route basemname={`/${process.env.PUBLIC_URL}`} path="" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="product" element={<Product />} />
         </Route>
