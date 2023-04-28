@@ -8,7 +8,7 @@ function ProductMenu(){
   return (
 	<>
 		<Container fluid>
-			<h1>Product List Tes</h1>
+			<h1>Product List</h1>
 			
 			<AddProduct />
 			<Product />
