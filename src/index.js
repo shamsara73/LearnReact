@@ -1,19 +1,32 @@
 import ReactDOM from "react-dom/client";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {HashRouter , BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from "./pages/Layout";
 import Home from "./pages/Home";
 import Product from "./pages/Product";
 
-export default function App() {
+// export default function App() {
+//   return (
+//     <Router basename='/LearnReact' >
+//       <Routes>
+//         <Route path="" element={<Layout />}>
+//           <Route index element={<Home />} />
+//           <Route path="/LearnReact/product" element={<Product />} />
+//         </Route>
+//       </Routes>
+//     </Router>
+//   );
+// }
+
+export default function App(){
   return (
-    <Router basename='/LearnReact' >
+    <HashRouter basename='/' >
       <Routes>
         <Route path="" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="/LearnReact/product" element={<Product />} />
+          <Route path="/product" element={<Product />} />
         </Route>
       </Routes>
-    </Router>
+    </HashRouter>
   );
 }
 
