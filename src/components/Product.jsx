@@ -340,10 +340,12 @@ function AddProductModal(data) {
             image_src,
             product_name,
             status
-        })
-        handleClose();
-        console.log(data);
-        data.setReload(1);
+        }).then(function(response){
+            handleClose();
+            // console.log(response);
+            data.setReload(1);
+        });
+        
     }
     const [show, setShow] = useState(false);
 

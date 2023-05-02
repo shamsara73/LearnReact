@@ -13,19 +13,6 @@ const Layout = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <Link to="/" className='nav-link'>Home</Link>
-              {/* <a class="nav-link active" aria-current="page" href="#">Home</a> */}
-            </li>
-            <li class="nav-item">
-             <Link to="/product" className='nav-link'>Product</Link>
-
-              {/* <a class="nav-link" href="#">Link</a> */}
-            </li>
-          </ul>
-            {/* <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/product">Product</Nav.Link> */}
              <Link to="/" className='nav-link'>Home</Link>
              <Link to="/product" className='nav-link'>Product</Link>
           </Nav>
