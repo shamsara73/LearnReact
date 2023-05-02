@@ -1,6 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Product from '../../components/Product';
-import AddProduct from '../../components/AddProduct';
 import Container from 'react-bootstrap/Container';
 
 
@@ -10,7 +9,7 @@ function ProductMenu(){
 		<Container fluid>
 			<h1>Product List</h1>
 			
-			<AddProduct />
+			{/* <AddProduct /> */}
 			<Product />
 		</Container>
 		
