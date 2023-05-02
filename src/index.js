@@ -6,11 +6,11 @@ import Product from "./pages/Product";
 
 export default function App() {
   return (
-    <Router basename={`/${process.env.PUBLIC_URL}`} >
+    <Router basename='/LearnReact' >
       <Routes>
         <Route path="" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="/product" element={<Product />} />
+          <Route path="/LearnReact/product" element={<Product />} />
         </Route>
       </Routes>
     </Router>
