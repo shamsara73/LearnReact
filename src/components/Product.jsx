@@ -168,9 +168,11 @@ function ProductTable(){
 					<th>Weight</th>
 					<th>Price</th>
 					<th>Image</th>
-					<th>Description</th>
+					{/* <th style={{wordWrap:"break-word",minWidth:"100px",maxWidth:"100px"}}>Description</th> */}
+					<th style={{wordWrap:"break-word",minWidth:"100px",maxWidth:"180px"}}>Description</th>
+
                     <th>Status</th>
-					<th>Action</th>
+					<th style={{minWidth:"180px"}}>Action</th>
 					</tr>
 				</thead>
 				<tbody>
