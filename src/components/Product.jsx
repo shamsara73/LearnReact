@@ -212,9 +212,10 @@ function ProductRow(props){
             </td>
 
 			<td>
-			<Button size='sm' variant="primary" >
+			{/* <Button size='sm' variant="primary" >
 				<Icon.Pencil size={12} className='mb-1' /> Edit
-			</Button>{' '}
+			</Button>{' '} */}
+            <EditProductModal props={{setReload:props.data.setReload,data:props.data.data}} />{' '}
 			<UpdateStatusProductModal data={{setReload: props.data.setReload,id : props.data.data.id,status : props.data.data.status}} />
 			
 			</td>
@@ -320,6 +321,143 @@ function UpdateStatusProductModal(data) {
     );
 }
 
+function EditProductModal(data){
+    const [id, setId] = useState(0);
+    const [brand, setBrand] = useState('');
+    const [price, setPrice] = useState(0);
+    const [weight, setWeight] = useState(0);
+    const [product_desc, setProduct_desc] = useState('');
+    const [image_src, setImageUrl] = useState('');
+    const [product_name, setProductName] = useState('');
+    const [status, setProductStatus]= useState(true);
+
+    const [dataReal, setDataReal]= useState(null);
+    const [dataFuture, setDataFuture]=useState(null);
+
+    const [show, setShow] = useState(false);
+
+
+    useEffect(() => {
+        // setTimeout(1500);
+        if(show){
+            // console.log(data.props.data.id);
+
+            console.log("load data edit");
+            axios.get('https://644b1ee817e2663b9de93566.mockapi.io/api/v1/products/'+data.props.data.id)
+            .then((response) => {
+                setDataReal(response.data);
+                setDataFuture(response.data);
+                // console.log(response);
+    
+            })
+        }
+        
+		
+	}, [show])
+
+    useEffect(()=>{
+        if(dataReal !== null){
+            console.log("loaded data edit");
+            setBrand(dataReal.brand);
+            setProductName(dataReal.product_name);
+            setPrice(dataReal.price);
+            setWeight(dataReal.weight);
+            setImageUrl(dataReal.image_src);
+            setId(dataReal.id);
+            setProduct_desc(dataReal.product_desc);
+        }
+
+    },[dataReal]);
+
+    const putData = () => {
+        
+        axios.put(`https://644b1ee817e2663b9de93566.mockapi.io/api/v1/products/`+data.props.data.id,{
+            brand,
+            product_name,
+            weight,
+            price,
+            image_src,
+            product_desc
+        })
+        .then(function(response){
+            setDataReal(response);
+            setDataFuture(response);
+            handleClose();
+            // console.log(response);
+            data.props.setReload(1);
+        });
+        
+    }
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+    return (
+        
+        <>
+        <Button size='sm' variant="primary" onClick={handleShow} >
+            <Icon.Pencil size={12} className='mb-1' /> Edit
+        </Button>
+        <Modal show={show} onHide={handleClose} backdrop="static"
+        keyboard={false}>
+            <Modal.Header closeButton>
+                <Modal.Title>                
+                Edit Product
+                </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+            <Container fluid>
+                <Row>
+                    <Col>
+                    <Form autoComplete='off'>
+                        <Row>
+                            <Form.Group as={Col} className="mb-3" controlId="formBrand">
+                                <Form.Label>Brand</Form.Label>
+                                <Form.Control type="text" placeholder="Enter brand name" value={brand} onChange={(e) => setBrand(e.target.value)} />
+                            </Form.Group>
+                            <Form.Group as={Col} className="mb-3" controlId="formProductName">
+                                <Form.Label>Product Name</Form.Label>
+                                <Form.Control type="text" placeholder="Enter product name" value={product_name} onChange={(e) => setProductName(e.target.value)} />
+                            </Form.Group>
+                        </Row>
+                        <Row>
+                            <Form.Group as={Col} className="mb-3" controlId="formWeight">
+                                <Form.Label>Weight</Form.Label>
+                                <Form.Control type="number" placeholder="Enter weight" value={weight} onChange={(e) => setWeight(e.target.value)} />
+                            </Form.Group>
+                            <Form.Group as={Col} className="mb-3" controlId="formProductName">
+                                <Form.Label>Price</Form.Label>
+                                <Form.Control type="number" placeholder="Enter product price" value={price} onChange={(e) => setPrice(e.target.value)} />
+                            </Form.Group>
+                        </Row>
+                        <Form.Group className="mb-3" controlId="formImage">
+                            <Form.Label>Image</Form.Label>
+                            <Form.Control type="text" placeholder="Enter image url" value={image_src} onChange={(e) => setImageUrl(e.target.value)}/>
+                        </Form.Group>
+                        <Form.Group className="mb-3" controlId="formProductDesc">
+                            <Form.Label>Description</Form.Label>
+                            <Form.Control type="text" placeholder="Enter product description" value={product_desc} onChange={(e) => setProduct_desc(e.target.value)}/>
+                        </Form.Group>
+                    </Form>
+                    </Col>
+                    
+                </Row>
+                
+            </Container>
+            </Modal.Body>
+            <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+                Close
+            </Button>
+            <Button variant="primary" onClick={putData}>
+                Update
+            </Button>
+            </Modal.Footer>
+        </Modal>
+        </>
+        
+    );
+}
 
 function AddProductModal(data) {
     const [brand, setBrand] = useState('');
